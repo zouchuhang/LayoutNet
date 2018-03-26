@@ -22,6 +22,7 @@ This includes the groundtruth 2D posiiton of room corners in .mat format from th
 
 ## Pretrained model
 - Download our pretrained [model](https://drive.google.com/file/d/1qqrKkT_nTN1RzjiLN92VvoB023ZoD28v/view?usp=sharing) to current folder
+
 This includes the pretrained full approach on the panoContext dataset, the joint boudary and corner prediction branch, the single boundary prediction branch and the 3D layout box regressor.
 
 ## Train network

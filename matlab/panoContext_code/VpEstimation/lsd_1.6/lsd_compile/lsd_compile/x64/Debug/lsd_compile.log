@@ -1,0 +1,21 @@
+﻿Build started 28/12/2012 2:58:15 PM.
+     1>Project "C:\Users\elezhny\Desktop\lsd_1.6\lsd_compile\lsd_compile\lsd_compile.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "x64\Debug\lsd_compile.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+       ManifestResourceCompile:
+         All outputs are up-to-date.
+       Link:
+         All outputs are up-to-date.
+         lsd_compile.vcxproj -> C:\Users\elezhny\Desktop\lsd_1.6\lsd_compile\x64\Debug\lsd_compile.exe
+       Manifest:
+         All outputs are up-to-date.
+       FinalizeBuildStatus:
+         Deleting file "x64\Debug\lsd_compile.unsuccessfulbuild".
+         Touching "x64\Debug\lsd_compile.lastbuildstate".
+     1>Done Building Project "C:\Users\elezhny\Desktop\lsd_1.6\lsd_compile\lsd_compile\lsd_compile.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.16

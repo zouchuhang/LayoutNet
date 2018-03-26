@@ -1,0 +1,26 @@
+function image = draw_line_image(image, lines, intensity)
+% image(height, width, length(intensity))
+% lines(num_lines).{x([1 2]), y([1 2])}
+% intensity([r g b]) or intensity([gray])
+
+for index = 1:length(lines)
+    x1 = round(lines(index).x(1));
+    x2 = round(lines(index).x(2));
+    y1 = round(lines(index).y(1));
+    y2 = round(lines(index).y(2));     
+
+    disp(num2str([x1 x2 y1 y2]))
+    line_width = abs(x2-x1);
+    line_height = abs(y2-y1);
+    if line_width >= line_height
+        for x = x1:sign(x2-x1):x2
+            y = round(x/abs(x2-x1)*(y2-y1)+y1);
+            image(y, x, :) = intensity;
+        end
+    else
+        for y = y1:sign(y2-y1):y2
+            x = round(y/abs(y2-y1)*(x2-x1)+x1);
+            image(y, x, :) = intensity;
+        end
+    end
+end

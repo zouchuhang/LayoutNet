@@ -1,0 +1,150 @@
+function pg = msTest(imsegs, data, maps, labelclassifier, segclassifier, normalize,dowrite)
+% [vacc, hacc, vcm, hcm] = testMultipleSegmentationsCV2(imsegs, labdata, segdata, maps, vclassifier, hclassifier, sclassifier, ncv)
+   
+if ~exist('normalize', 'var') || isempty(normalize)
+    normalize = 1;
+end
+
+pg = cell(numel(imsegs), 1);
+allcount = 0;
+
+nclasses = size(labelclassifier.wcs,2);
+if dowrite
+labelikelihoodimg=cell(size(data,2),nclasses);
+homimg=cell(1,size(data,2));
+end  
+
+for f = 1:numel(imsegs)
+            
+    %disp(num2str(f))
+    
+    nsp = imsegs(f).nseg;   
+
+    pg{f} = zeros(nsp, nclasses);
+    
+    
+    segs = cell(nsp, 1);
+
+    count = zeros(nsp, 1);
+    
+    if ~normalize
+        sum_s = zeros(nsp, 1);
+    end
+    
+    
+
+    for k = 1:size(data, 2)
+        
+       if dowrite
+       labelikelihoodimg{k,1}=zeros(size(imsegs.segimage));
+       labelikelihoodimg{k,2}=zeros(size(imsegs.segimage));
+       labelikelihoodimg{k,3}=zeros(size(imsegs.segimage));
+       labelikelihoodimg{k,4}=zeros(size(imsegs.segimage));
+       labelikelihoodimg{k,5}=zeros(size(imsegs.segimage));
+       labelikelihoodimg{k,6}=zeros(size(imsegs.segimage));
+       labelikelihoodimg{k,7}=zeros(size(imsegs.segimage));
+       homimg{k}=zeros(size(imsegs.segimage));
+       end
+        
+        isvalid = false(size(data{f, k}, 1), 1);
+        for s = 1:size(data{f, k}, 1)
+            [segs, ind] = checksegs(segs, maps{f}(:, k), s);            
+            isvalid(s) = ~isempty(ind);
+        end
+            
+        yconf_all = test_boosted_dt_mc(labelclassifier, data{f, k}(isvalid, :));
+        sconf_all = test_boosted_dt_mc(segclassifier, data{f, k}(isvalid, :)); 
+                  
+        isvalid = find(isvalid);
+        for s = 1:numel(isvalid)     
+            
+            ind = find(maps{f}(:, k)==isvalid(s));
+
+            %%%
+            if dowrite
+            homimg{k}(:,:)=double(homimg{k}(:,:))+double(ismember(imsegs.segimage,ind).*sconf_all(s));
+            labelikelihoodimg{k,1}(:,:)=double(labelikelihoodimg{k,1}(:,:))+double(ismember(imsegs.segimage,ind).*yconf_all(s,1));
+            labelikelihoodimg{k,2}(:,:)=double(labelikelihoodimg{k,2}(:,:))+double(ismember(imsegs.segimage,ind).*yconf_all(s,2));
+            labelikelihoodimg{k,3}(:,:)=double(labelikelihoodimg{k,3}(:,:))+double(ismember(imsegs.segimage,ind).*yconf_all(s,3));
+            labelikelihoodimg{k,4}(:,:)=double(labelikelihoodimg{k,4}(:,:))+double(ismember(imsegs.segimage,ind).*yconf_all(s,4));
+            labelikelihoodimg{k,5}(:,:)=double(labelikelihoodimg{k,5}(:,:))+double(ismember(imsegs.segimage,ind).*yconf_all(s,5));
+            labelikelihoodimg{k,6}(:,:)=double(labelikelihoodimg{k,6}(:,:))+double(ismember(imsegs.segimage,ind).*yconf_all(s,6));
+            labelikelihoodimg{k,7}(:,:)=double(labelikelihoodimg{k,7}(:,:))+double(ismember(imsegs.segimage,ind).*yconf_all(s,7));
+            end
+            
+            count(ind) = count(ind) + 1;
+
+            yconf = yconf_all(s, :);
+            yconf = 1 ./ (1+exp(-yconf));
+            
+            if normalize
+                yconf = yconf / sum(yconf);        
+            end
+
+            sconf = sconf_all(s, :);
+            sconf = 1 ./ (1+exp(-sconf));           
+          
+            pgs = yconf*sconf;
+            
+            if ~normalize
+                sum_s(ind) = sum_s(ind) + sconf;
+            end
+            pg{f}(ind, :) = pg{f}(ind, :) + repmat(pgs, numel(ind), 1);
+            
+        end
+                
+    end
+     
+    if normalize
+        pg{f} = pg{f} ./ max(repmat(sum(pg{f}, 2), 1, size(pg{f}, 2)), 0.00001);    
+    else
+        pg{f} = pg{f} ./ repmat(sum_s, [1 size(pg{f}, 2)]);
+    end 
+        
+    allcount = allcount + mean(count);
+    
+end
+        
+allcount = allcount / numel(imsegs);
+
+if dowrite
+    tempdir='E:\Research\FunctionalLabeling\examples\anal\';
+    for ll1=1:numel(homimg)
+        imwrite(homimg{ll1}*255/max(homimg{ll1}),[],fullfile(tempdir,[num2str(ll1) '_hom.png']));
+        for ll2=1:size(labelikelihoodimg,2)
+            imwrite(labelikelihoodimg{ll1,ll2},[],fullfile(tempdir,[num2str(ll1) '_' num2str(ll2) '_lablike.png']));
+        end
+    end
+
+end
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+function [segs, ind] = checksegs(segs, map, s)
+% Checks whether this segment has been seen before
+
+ind = find(map==s);
+
+if 0
+
+if numel(ind)==1 % already accounted for by superpixels
+    ind = [];
+    return;
+end
+
+end
+
+oldsegs = segs{ind(1)};
+
+for k = 1:numel(oldsegs)
+    if (numel(oldsegs{k})==numel(ind)) && oldsegs{k}(1)==ind(1) && all(oldsegs{k}==ind)
+        ind = [];
+        return;
+    end
+end
+
+segs{ind(1)}{end+1} = ind;
+
+         
+
+

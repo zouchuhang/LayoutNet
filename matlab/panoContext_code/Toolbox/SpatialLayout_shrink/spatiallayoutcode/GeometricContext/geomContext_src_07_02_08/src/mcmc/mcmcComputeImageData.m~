@@ -1,0 +1,38 @@
+function imdata = mcmcComputeImageData(im, imsegs)
+
+[imh, imw] = size(imsegs.segimage);
+imdata.yim = 1-repmat([(0:imh-1)/(imh-1)]', 1, imw);
+imdata.xim = repmat([(0:imw-1)/(imw-1)], imh, 1);
+
+[gx, gy] = gradient(im);
+imdata.gradim = sqrt(sum(gx.^2 + gy.^2, 3));
+
+minEdgeLen = sqrt(imh^2+imw^2)*0.02;
+[vpdata.lines, vpdata.spinfo] = ...
+    APPgetLargeConnectedEdges(rgb2gray(im), minEdgeLen, imsegs);
+[vpdata.v, vpdata.vars, vpdata.p, vpdata.hpos] = ...
+    APPestimateVp(vpdata.lines, [imh imw], 0);
+
+imdata.vpdata = vpdata;
+
+% get pixels in each superpixe
+stats = regionprops(imsegs.segimage, 'PixelIdxList');
+imdata.pixlist = {stats.PixelIdxList};
+
+for s = 1:imsegs.nseg
+    npix = numel(imdata.pixlist{s});
+    if npix>1000
+        rind = randperm(npix);
+        imdata.smpixlist = imdata.smpixlist(rind(1:1000));
+        
+        
+
+% get boundary pixels for each superpixel
+[tx, ty] = gradient(double(imsegs.segimage));
+segedgeim = (tx~=0) | (ty ~=0);
+stats = regionprops(double(imsegs.segimage).*segedgeim, 'PixelIdxList');
+imdata.bndpixlist = {stats.PixelIdxList};
+imdata.bndnpix = zeros(size(imdata.bndpixlist));
+for s = 1:imsegs.nseg
+    imdata.bndnpix(s) = numel(imdata.bndpixlist{s});
+end

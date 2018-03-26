@@ -1,0 +1,38 @@
+function image = draw_line_image2(image, lines, intensity, varargin)
+% image(height, width, length(intensity))
+% lines([x1 x2 y1 y2], num_lines)
+% intensity([r g b]) or intensity([gray])
+
+b = [0];
+if length(varargin)>0
+    w = varargin{1};
+    b =[ceil(-w/2):floor(w/2)+w-1]; 
+end
+
+for index = 1:size(lines,2)
+    x1 = min(max(round(lines(1, index)), 1), size(image, 2));
+    x2 = min(max(round(lines(2, index)), 1), size(image, 2));
+    y1 = min(max(round(lines(3, index)), 1), size(image, 1));
+    y2 = min(max(round(lines(4, index)), 1), size(image, 1));       
+    
+    line_width = abs(x2-x1);
+    line_height = abs(y2-y1);
+
+    if line_width >= line_height
+        for x = x1:sign(x2-x1):x2
+            y = round((x-x1)/(x2-x1)*(y2-y1)+y1);
+  %          try
+                image(y+b, x, :) = intensity;
+   %         catch
+   %         end
+        end
+    else
+        for y = y1:sign(y2-y1):y2
+            x = round((y-y1)/(y2-y1)*(x2-x1)+x1);
+            try
+                image(y, x+b, :) = intensity;
+            catch
+            end
+        end
+    end
+end

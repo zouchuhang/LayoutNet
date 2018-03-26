@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of seqIo</title>
+  <meta name="keywords" content="seqIo">
+  <meta name="description" content="Utilities for reading and writing seq files.">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html &copy; 2003 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<!-- menu.html images -->
+<h1>seqIo
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>Utilities for reading and writing seq files.</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>function out = seqIo( fName, action, varargin ) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> Utilities for reading and writing seq files.
+
+ A seq file is a series of concatentated image frames with a fixed size
+ header. It is essentially the same as merging a directory of images into
+ a single file. seq files are convenient for storing videos because: (1)
+ no video codec is required, (2) seek is instant and exact, (3) seq files
+ can be read on any operating system. The main drawback is that each frame
+ is encoded independently, resulting in increased file size. The advantage
+ over storing as a directory of images is that a single large file is
+ created. Currently, either uncompressed, jpg or png compressed frames
+ are supported. The seq file format is modeled after the Norpix seq format
+ (in fact this reader can be used to read some Norpix seq files). The
+ actual work of reading/writing seq files is done by seqReaderPlugin and
+ seqWriterPlugin (there is no need to call those functions directly).
+
+ seqIo contains a number of utility functions for working with seq files.
+ The format for accessing the various utility functions is:
+  out = seqIo( fName, 'action', inputs );
+ The list of functions and help for each is given below. Also, help on
+ individual subfunctions can be accessed by: &quot;help seqIo&gt;action&quot;.
+
+ Create interface sr for reading seq files.
+   sr = seqIo( fName, 'reader', [cache] )
+ Create interface sw for writing seq files.
+   sw = seqIo( fName, 'writer', info )
+ Get info about seq file.
+   info = seqIo( fName, 'getInfo' )
+ Crop sub-sequence from seq file.
+   seqIo( fName, 'crop', tName, frames )
+ Extract images from seq file to target directory or array.
+   Is = seqIo( fName, 'toImgs', [tDir], [skip], [f0], [f1], [ext] )
+ Create seq file from an array or directory of images or from an AVI file.
+   seqIo( fName, 'frImgs', info, varargin )
+ Convert seq file by applying imgFun(I) to each frame I.
+   seqIo( fName, 'convert', tName, imgFun, varargin )
+ Replace header of seq file with provided info.
+   seqIo( fName, 'newHeader', info )
+ Create interface sr for reading dual seq files.
+   sr = seqIo( fNames, 'readerDual', [cache] )
+
+ USAGE
+  out = seqIo( fName, action, varargin )
+
+ INPUTS
+  fName      - seq file to open
+  action     - controls action (see above)
+  varargin   - additional inputs (see above)
+
+ OUTPUTS
+  out       - depends on action (see above)
+
+ EXAMPLE
+
+ See also seqIo&gt;reader, seqIo&gt;writer, seqIo&gt;getInfo, seqIo&gt;crop,
+ seqIo&gt;toImgs, seqIo&gt;frImgs, seqIo&gt;convert, seqIo&gt;newHeader,
+ seqIo&gt;readerDual, <a href="seqPlayer.html" class="code" title="function seqPlayer( fName, dispFunc )">seqPlayer</a>, <a href="seqReaderPlugin.html" class="code" title="function varargout = seqReaderPlugin( cmd, h, varargin )">seqReaderPlugin</a>, <a href="seqWriterPlugin.html" class="code" title="function varargout = seqWriterPlugin( cmd, h, varargin )">seqWriterPlugin</a>
+
+ Piotr's Image&amp;Video Toolbox      Version 2.61
+ Copyright 2012 Piotr Dollar.  [pdollar-at-caltech.edu]
+ Please email me if you find bugs, or have suggestions or questions!
+ Licensed under the Simplified BSD License [see external/bsd.txt]</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="seqReaderPlugin.html" class="code" title="function varargout = seqReaderPlugin( cmd, h, varargin )">seqReaderPlugin</a>	Plugin for seqIo and videoIO to allow reading of seq files.</li><li><a href="seqWriterPlugin.html" class="code" title="function varargout = seqWriterPlugin( cmd, h, varargin )">seqWriterPlugin</a>	Plugin for seqIo and videoIO to allow writing of seq files.</li><li><a href="../matlab/getPrmDflt.html" class="code" title="function varargout = getPrmDflt( prm, dfs, checkExtra )">getPrmDflt</a>	Helper to set default values (if not already set) of parameter struct.</li><li><a href="../matlab/int2str2.html" class="code" title="function nstr = int2str2( n, nDigits )">int2str2</a>	Convert integer to string of given length; improved version of int2str.</li><li><a href="../matlab/ticStatus.html" class="code" title="function id = ticStatus( msg, updateFreq, updateMinT, erasePrev )">ticStatus</a>	Used to display the progress of a long process.</li><li><a href="../matlab/tocStatus.html" class="code" title="function tocStatus( id, fracDone )">tocStatus</a>	Used to display the progress of a long process.</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="../detector/acfDemoInria.html" class="code" title="">acfDemoInria</a>	Demo for aggregate channel features object detector on Inria dataset.</li><li><a href="behaviorAnnotator.html" class="code" title="function behaviorAnnotator( fName, aName, tName )">behaviorAnnotator</a>	Caltech Behavior Annotator.</li><li><a href="seqPlayer.html" class="code" title="function seqPlayer( fName, dispFunc )">seqPlayer</a>	Simple GUI to play seq files.</li></ul>
+<!-- crossreference -->
+
+
+
+
+<!-- Start of Google Analytics Code -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-4884268-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+<!-- end of Google Analytics Code -->
+
+<hr><address>Generated by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" target="_parent">m2html</a></strong> &copy; 2003</address>
+</body>
+</html>

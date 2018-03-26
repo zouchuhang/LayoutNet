@@ -1,0 +1,12 @@
+This file contains the list of various toolbox functions that are not 
+included in the CTF file. An error will be thrown if any of these functions
+ are called at run-time. Some of these functions may be from toolboxes 
+that you are not using in your application. The reason for this is that 
+these toolboxes have overloaded some methods that are called by your code. 
+If you know which toolboxes are being used by your code, you can use the -p
+ flag with the -N flag to list these toolboxes explicitly. This will 
+cause MATLAB Compiler to only look for functions in the specified toolbox 
+directories in addition to the MATLAB directories. Refer to the MCC 
+documentation for more information on this.
+
+0 item(s) removed. You can review the mccExcludedFiles.log file for the list of functions not included in the CTF archive.

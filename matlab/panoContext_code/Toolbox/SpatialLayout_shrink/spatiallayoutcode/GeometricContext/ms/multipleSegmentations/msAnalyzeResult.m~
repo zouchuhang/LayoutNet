@@ -1,0 +1,68 @@
+function [acc, cm, classcount] = ...
+    msAnalyzeResult(imsegs, labels, pg, DO_SP, ignore, niter)
+
+nclasses = size(pg{1}, 2);
+cm = zeros(nclasses, nclasses);
+total = 0;
+acc = 0;
+
+for f = 1:numel(pg)                        
+
+    if exist('niter', 'var') && ~isempty(niter)     
+        pg{f} = mean(pg{f}(:, :, 1:niter), 3);    
+    end
+    
+    lab = labels{f}(:);    
+    
+    npixels = imsegs(f).npixels(:) / sum(imsegs(f).npixels);
+    
+    pg{f}(:, ignore) = 0;
+
+    ind = false(size(lab));
+    for k = 1:numel(ignore)
+        ind(lab==ignore(k)) = true;
+    end
+    lab(ind) = 0;
+    [maxval, maxlab] = max(pg{f}, [], 2);   
+    
+    if DO_SP
+    
+        acc = acc + sum((lab==maxlab).*npixels);
+        total = total + sum(npixels(lab>0));
+        
+        for s = 1:numel(maxlab)
+            if lab(s)~=0
+                cm(lab(s), maxlab(s)) = cm(lab(s), maxlab(s)) + npixels(s);
+            end       
+        end
+    else
+        
+        if any(lab(:)==15)
+            keyboard;
+        end
+        
+        maxlab = maxlab(imsegs(f).segimage);
+        acc = acc + sum(lab==maxlab(:))/sum(imsegs(f).npixels);
+        total = total + sum(lab(:)>0)/sum(imsegs(f).npixels);
+        for y1 = 1:nclasses
+            ind = lab==y1;
+            if any(ind)
+                for y2 = 1:nclasses
+                    ind2 = ind & (maxlab(:)==y2);
+                    cm(y1, y2) = sum(ind2)/sum(imsegs(f).npixels);
+                end
+            end
+        end
+    end
+end
+
+acc = acc / total;
+
+classcount = sum(cm, 2)';  
+classcount = classcount / sum(classcount);
+
+cm = cm ./ max(repmat(sum(cm, 2), 1, size(cm, 2)), 1E-9);
+
+    
+%disp(['vacc: ' num2str(vacc) '   hacc: ' num2str(hacc)])
+%disp(num2str(sum(ny, 1) / sum(totalv)))

@@ -1,0 +1,66 @@
+addpath('./GeometricContext/ms/multipleSegmentations/');
+addpath('./GeometricContext/geomContext_src_07_02_08/src/');
+addpath('../GeometricContext/geomContext_src_07_02_08/src/tools/misc/');
+addpath('../GeometricContext/geomContext_src_07_02_08/src/geom/');
+addpath('../GeometricContext/geomContext_src_07_02_08/src/mcmc/');
+addpath('../GeometricContext/geomContext_src_07_02_08/src/textons/');
+addpath('../GeometricContext/geomContext_src_07_02_08/src/boosting/boostDt/');
+addpath('../GeometricContext/geomContext_src_07_02_08/src/boosting/boostDt/weightedstats/');
+addpath('../GeometricContext/geomContext_src_07_02_08/src/tools/misc/');
+addpath('../GeometricContext/segment/');
+
+addpath('../../GeometricContext/geomContext_src_07_02_08/src/boosting/');
+
+addpath('./ComputeVP/');
+addpath('./Geometry/');
+addpath('./CLayouts/');
+addpath('./StructureLearning/');
+addpath('./Scripts/');
+addpath('./Visualize/');
+addpath('./Performance/');
+addpath('./Make3D/');
+addpath('./Cuboids/');
+addpath('./Tools/');
+addpath ./Jointmodel/
+
+datadir='../NewData/';
+imdir='../NewData/Images/';
+vpdir='../NewData/VP/';
+imdatadir='../NewData/ImData/';
+fCdir='../NewData/FieldClassifierData/';
+gtdir='../NewData/GTParseLabels/';
+tempdir='../NewData/Temp/';
+integimagedir='../NewData/IntegralImages/';
+graddatadir='../NewData/GradientData/';
+
+
+labelconfdir='../NewData/LabelConfidences/';
+gt3Ddir='../NewData/GT3dcuboids/';
+cuboiddatadir='../NewData/CuboidData/';
+integimagedir='../NewData/IntegralImages/';
+
+
+% classdir=[exptdir '/LearntClassifiers/'];
+% fdir=[exptdir '/LabelClassifierData/'];
+% segfeatdir=[exptdir '/SegmentFeatures/'];
+% reesdir=[exptdir '/FieldReestimationData/'];
+
+
+% imdir='../Images_resized/';
+% vpdir='../VP/';
+% imdatadir='../ImData/';
+% fCdir='../FieldClassifierData/';
+% gtdir='../GTParseLabels_resized/';
+% tempdir='../Temp/';
+% integimagedir='../IntegralImages/';
+% graddatadir='../GradientData/';
+% 
+% 
+% 
+% 
+% exptdir='../Expt4';
+% labelconfdir=[exptdir '/LabelConfidences/'];
+% classdir=[exptdir '/LearntClassifiers/'];
+% fdir=[exptdir '/LabelClassifierData/'];
+% segfeatdir=[exptdir '/SegmentFeatures/'];
+% reesdir=[exptdir '/FieldReestimationData/'];

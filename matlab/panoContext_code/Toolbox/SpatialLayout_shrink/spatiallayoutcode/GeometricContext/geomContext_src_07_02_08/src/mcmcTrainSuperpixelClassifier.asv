@@ -1,0 +1,47 @@
+function [vclassifier, hclassifier, spfeatures] = ...
+    mcmcTrainSuperpixelClassifier(imdir, imsegs)
+
+ntrees = 25;
+nnodes = 8;
+ndata = 10000;
+vnames = imsegs(1).vert_names;
+hnames = imsegs(1).horz_names;
+for f = 1:numel(imsegs)    
+    im = im2double(imread([imdir '/' imsegs(f).imname]));
+    spfeatures{f} = mcmcGetSuperpixelData(im, imsegs(f));
+    spvlabels{f} = imsegs(f).vert_labels;
+    sphlabels{f} = imsegs(f).horz_labels;    
+end
+
+% train {ground, vertical, sky} classifier
+[vdata, vlab] = formatData(spfeatures, spvlabels, ndata); 
+vclassifier = train_boosted_dt_mc(vdata, [], vnames(vlab), ...
+    ntrees, nnodes, [], vnames);
+
+% train vertical subclass classifier  
+[hdata, hlab] = formatData(spfeatures, sphlabels, ndata); 
+hclassifier = train_boosted_dt_mc(hdata, [], hnames(hlab), ...
+    ntrees, nnodes, [], hnames);
+    
+
+function [data, lab] = formatData(features, labels, ndata)
+% concatenate data and select ndata random datapoints
+
+nimages = numel(features);
+
+[tmp, nvars] = size(features{1});
+
+nsp = 0;
+for f = 1:nimages
+    nsp = nsp + sum(labels{f}~=0);
+end
+
+data = zeros(nsp, nvars);
+lab = zeros(nsp, 1);
+
+vc = 0;
+for f = 1:nimages
+    ind = find(labels{f}~=0);
+    data(vc+1:vc+numel(ind), :) = features{f}(ind, :);
+    
+    lab(

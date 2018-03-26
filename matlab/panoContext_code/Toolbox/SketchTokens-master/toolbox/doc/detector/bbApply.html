@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+                "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+  <title>Description of bbApply</title>
+  <meta name="keywords" content="bbApply">
+  <meta name="description" content="Functions for manipulating bounding boxes (bb).">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="generator" content="m2html &copy; 2003 Guillaume Flandin">
+  <meta name="robots" content="index, follow">
+  <link type="text/css" rel="stylesheet" href="../m2html.css">
+</head>
+<body>
+<a name="_top"></a>
+<!-- menu.html detector -->
+<h1>bbApply
+</h1>
+
+<h2><a name="_name"></a>PURPOSE <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>Functions for manipulating bounding boxes (bb).</strong></div>
+
+<h2><a name="_synopsis"></a>SYNOPSIS <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="box"><strong>function varargout = bbApply( action, varargin ) </strong></div>
+
+<h2><a name="_description"></a>DESCRIPTION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+<div class="fragment"><pre class="comment"> Functions for manipulating bounding boxes (bb).
+
+ A bounding box (bb) is also known as a position vector or a rectangle
+ object. It is a four element vector with the fields: [x y w h]. A set of
+ n bbs can be stores as an [nx4] array, most funcitons below can handle
+ either a single or multiple bbs. In addtion, typically [nxm] inputs with
+ m&gt;4 are ok (with the additional columns ignored/copied to the output).
+
+ bbApply contains a number of utility functions for working with bbs. The
+ format for accessing the various utility functions is:
+  outputs = bbApply( 'action', inputs );
+ The list of functions and help for each is given below. Also, help on
+ individual subfunctions can be accessed by: &quot;help bbApply&gt;action&quot;.
+
+ Compute area of bbs.
+   bb = bbApply( 'area', bb )
+ Shift center of bbs.
+   bb = bbApply( 'shift', bb, xdel, ydel )
+ Get center of bbs.
+   cen = bbApply( 'getCenter', bb )
+ Get bb at intersection of bb1 and bb2 (may be empty).
+   bb = bbApply( 'intersect', bb1, bb2 )
+ Get bb that is union of bb1 and bb2 (smallest bb containing both).
+   bb = bbApply( 'union', bb1, bb2 )
+ Resize the bbs (without moving their centers).
+   bb = bbApply( 'resize', bb, hr, wr, [ar] )
+ Fix bb aspect ratios (without moving the bb centers).
+   bbr = bbApply( 'squarify', bb, flag, [ar] )
+ Draw single or multiple bbs to image (calls rectangle()).
+   hs = bbApply( 'draw', bb, [col], [lw], [ls], [prop], [ids] )
+ Embed single or multiple bbs directly into image.
+  I = bbApply( 'embed', I, bb, [varargin] )
+ Crop image regions from I encompassed by bbs.
+   [patches, bbs] = bbApply('crop',I,bb,[padEl],[dims])
+ Convert bb relative to absolute coordinates and vice-versa.
+   bb = bbApply( 'convert', bb, bbRef, isAbs )
+ Randomly generate bbs that fall in a specified region.
+   bbs =  bbApply( 'random', pRandom )
+ Convert weighted mask to bbs.
+   bbs = bbApply('frMask',M,bbw,bbh,[thr])
+ Create weighted mask encoding bb centers (or extent).
+   M = bbApply('toMask',bbs,w,h,[fill],[bgrd])
+
+ USAGE
+  varargout = bbApply( action, varargin );
+
+ INPUTS
+  action     - string specifying action
+  varargin   - depends on action, see above
+
+ OUTPUTS
+  varargout  - depends on action, see above
+
+ EXAMPLE
+
+ See also bbApply&gt;area bbApply&gt;shift bbApply&gt;getCenter bbApply&gt;intersect
+ bbApply&gt;union bbApply&gt;resize bbApply&gt;squarify bbApply&gt;draw bbApply&gt;crop
+ bbApply&gt;convert bbApply&gt;random bbApply&gt;frMask bbApply&gt;toMask
+
+ Piotr's Image&amp;Video Toolbox      Version 2.65
+ Copyright 2012 Piotr Dollar.  [pdollar-at-caltech.edu]
+ Please email me if you find bugs, or have suggestions or questions!
+ Licensed under the Simplified BSD License [see external/bsd.txt]</pre></div>
+
+<!-- crossreference -->
+<h2><a name="_cross"></a>CROSS-REFERENCE INFORMATION <a href="#_top"><img alt="^" border="0" src="../up.png"></a></h2>
+This function calls:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="../channels/imResample.html" class="code" title="function B = imResample( A, scale, method, norm )">imResample</a>	Fast bilinear image downsampling/upsampling.</li><li><a href="../images/im.html" class="code" title="function varargout = im( I, range, extraInf )">im</a>	Function for displaying grayscale images.</li><li><a href="../matlab/arrayCrop.html" class="code" title="function I = arrayCrop( I, strLocs, endLocs, padEl )">arrayCrop</a>	Used to crop a rectangular region from an n dimensional array.</li><li><a href="../matlab/c.html" class="code" title="">c</a>	clc - clear command window.</li><li><a href="../matlab/char2img.html" class="code" title="function masks = char2img( strings, h, pad )">char2img</a>	Convert ascii text to a binary image using pre-computed templates.</li><li><a href="../matlab/getPrmDflt.html" class="code" title="function varargout = getPrmDflt( prm, dfs, checkExtra )">getPrmDflt</a>	Helper to set default values (if not already set) of parameter struct.</li><li><a href="../matlab/randSample.html" class="code" title="function r = randSample( n, k, isArray )">randSample</a>	Generate values sampled uniformly without replacement from 1:n.</li><li><a href="../matlab/ticStatus.html" class="code" title="function id = ticStatus( msg, updateFreq, updateMinT, erasePrev )">ticStatus</a>	Used to display the progress of a long process.</li><li><a href="../matlab/tocStatus.html" class="code" title="function tocStatus( id, fracDone )">tocStatus</a>	Used to display the progress of a long process.</li><li><a href="../matlab/uniqueColors.html" class="code" title="function clrs = uniqueColors( m, n, show, offset )">uniqueColors</a>	Generate m*n visually distinct RGB colors suitable for display.</li></ul>
+This function is called by:
+<ul style="list-style-image:url(../matlabicon.gif)">
+<li><a href="acfDemoCal.html" class="code" title="">acfDemoCal</a>	Demo for aggregate channel features object detector on Caltech dataset.</li><li><a href="acfDemoInria.html" class="code" title="">acfDemoInria</a>	Demo for aggregate channel features object detector on Inria dataset.</li><li><a href="acfTrain.html" class="code" title="function detector = acfTrain( varargin )">acfTrain</a>	Train aggregate channel features object detector.</li><li><a href="bbGt.html" class="code" title="function varargout = bbGt( action, varargin )">bbGt</a>	Bounding box (bb) annotations struct, evaluation and sampling routines.</li><li><a href="bbNms.html" class="code" title="function bbs = bbNms( bbs, varargin )">bbNms</a>	Bounding box (bb) non-maximal suppression (nms).</li></ul>
+<!-- crossreference -->
+
+
+
+
+<!-- Start of Google Analytics Code -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-4884268-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+<!-- end of Google Analytics Code -->
+
+<hr><address>Generated by <strong><a href="http://www.artefact.tk/software/matlab/m2html/" target="_parent">m2html</a></strong> &copy; 2003</address>
+</body>
+</html>

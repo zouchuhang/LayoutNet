@@ -1,0 +1,58 @@
+%function [pg, energy, map, allenergy] = mcmcEvaluate(imsegs, imdir, vclassifierSP, hclassifierSP, ...
+%    eclassifier, ecal, vclassifier, hclassifier, sclassifier, spdata, adjlist, edata)
+
+DO_LOAD = 1;
+
+imdir = '../images/all_images';
+
+if DO_LOAD
+    clear
+    load '../data/allimsegs2.mat';
+    load '../data/mcmcEdgeData.mat';
+    load '../data/mcmcEdgeClassifier.mat';
+    load '../data/mcmcSuperpixelData.mat';
+    load '../data/mcmcSuperpixelClassifier.mat';    
+    tmp = load('/IUS/vmr20/dhoiem/data/ijcv06/spSegResults.mat');
+    vclassifier = tmp.vclassifier;
+    hclassifier = tmp.hclassifier;
+    clear tmp;
+end
+
+ncv = numel(vclassifier);
+
+niter = 10;
+
+vacc = zeros(numel(imsegs), 1);
+hacc = zeros(numel(imsegs), 1);
+
+%load '../data/tmp.mat'
+  
+for tf = 1:numel(cv_images)
+    
+    f = cv_images(tf);
+    
+    c = ceil(f/numel(imsegs)*ncv);
+    
+    disp([num2str(f) ': ' imsegs(f).imname])
+    
+    im = im2double(imread([imdir '/' imsegs(f).imname]));
+    
+    [pg{tf}, smaps{tf}] = mcmcTestImageSA(im, imsegs(f), ...
+        vclassifierSP, hclassifierSP, eclassifier, ecal, vclassifier(c), hclassifier(c), ...
+        sclassifier(c), niter, spdata{f}, adjlist{f}, edata{f});
+                    
+    %energy(f) = allenergy{f}(end);     
+   
+    %save '../data/tmp.mat' pg vacc hacc vtotal htotal energy
+
+    %disp('***** Report *****') ;
+    %disp('Total')
+    %disp(['vacc: ' num2str(sum(vacc)/sum(vtotal)) '   hacc: ' num2str(sum(hacc)/sum(htotal))])
+    %disp('*** End Report ***');
+    
+end
+
+[vacc(f), hacc(f), vcm, hcm] = mcmcProcessResult(imsegs(f), pg(f));
+
+
+

@@ -1,0 +1,36 @@
+function pg = confidenceImages2pg(idx, cim)
+% pg = confidenceImages2pg(idx, cim)
+% Computes average likelihood for regions given by pixel indices
+%
+
+if ~iscell(idx{1})
+    idx{1} = {idx};
+end
+if ~iscell(cim)
+    cim{1} = cim;
+end
+
+for f = 1:numel(idx)    
+    npix = size(cim{f}, 1)*size(cim{f}, 2);
+    for k = 1:size(cim, 3)
+    
+
+cimages = cell(length(imsegs), 1);
+
+cnames = {'000', '090-045', '090-090', '090-135', '090-por', '090-sol', 'sky', '090'};
+
+for f = 1:length(imsegs)
+
+    [pv, ph] = splitpg(pg{f});
+    
+    cimages{f} = zeros([imsegs(f).imsize 8]);
+    
+    for k = 1:size(pg{f}, 2)
+        tmppg = pg{f}(:, k);
+        cimages{f}(:, :, k) = tmppg(imsegs(f).segimage);
+    end
+    tmppg = pv(:, 2);
+    cimages{f}(:, :, end) = tmppg(imsegs(f).segimage);
+             
+end
+    

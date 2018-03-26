@@ -1,0 +1,45 @@
+function [mclab, mcprc, allprc, trainw] = msLabelMap2Sp(lmap, smap, maxlab)
+
+nocell = fasle;
+if ~iscell(lmap)
+    nocell = true;
+    labels = {lmap};
+    smap = {smap};
+end
+
+if ~exist('maxlab', 'var') || isempty(maxlab)
+    maxlab = 0;
+    for f = 1:numel(lmap)
+        maxlab = max(maxlab, max(lmap{f}(:)));
+    end
+end
+
+for f = 1:numel(labels)
+
+    nseg = max(smap{f}(:));
+    npix = numel(smap{f});
+    stats = regionprops(smap{f}, 'PixelIdxList');
+    idx = {stats.idx};
+   
+    
+    mclab{f} = zeros(nseg, 1);
+    mcprc{f} = zeros(nseg, 1);
+    allprc{f} = zeros(nseg, 0);
+    trainw{f} = zeros(nseg, 1);
+
+    for s = 1:nseg
+        ind = find(smap==s);
+        for k = 1:7        
+            allprc(s, k) = allprc(s, k) + sum((imsegs.labels(ind)==k).*imsegs.npixels(ind));        
+        end    
+        allprc(s, :) = allprc(s, :) / max(sum(allprc(s, :)),1E-6);
+        [mcprc(s), mclab(s)] = max(allprc(s, :));
+        trainw(s) = sum(imsegs.npixels(ind))/sum(imsegs.npixels);
+    end
+   
+if nocell
+    mclab = mclab{1};
+    mcprc = mcprc{1};
+    allprc = allprc{1};
+    trainw = trainw{1};
+end

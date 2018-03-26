@@ -1,0 +1,92 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+AUTOMATIC PHOTO POPUP SOURCE README
+Derek Hoiem (dhoiem@cs.cmu.edu)
+10/08/05
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+LICENSE:
+
+Copyright (C) 2005 Derek Hoiem, Carnegie Mellon University
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the 
+Free Software Foundation; either version 2 of the License, or (at your
+option) any later version.  
+
+This program is distributed in the hope that it will be useful but 
+WITHOUT WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PUPROSE.  See the GNU General Public License
+
+You should have received a copy of the GNU General Public License along with 
+this program; if not, write to the Free Software Foundation, Inc., 
+59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+Details of GPL License available in GNU_GPL_License.txt at base of this
+source tree.  
+
+This software is only available for non-commercial use.  Contact Derek
+Hoiem (dhoiem@cs.cmu.edu) with questions regarding commercial licensing.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+How to RUN:
+
+There are two ways to process an image.
+
+1) Use photoPopup (type help photoPopup or photoPopup without args for 
+instructions).  With photoPopup you give a pointer to the filenames of the 
+image, the extension to the superpixel image, and the learned models (.mat 
+file in appsrc).  See below about getting the superpixel image.  photoPopup 
+will output the labeled image, the vrml, and confidence maps for the labels.  
+You can edit the .m file to save computational time if some of these outputs 
+do not interest you.  The superpixel image is expected to be in the same
+directory as the image and have the same base filename.
+
+2) Use APPtestDirectory.  Here, you give the classifiers contained in the .mat
+file, the directory where a set of images are stored, and a set of superpixel
+structures.  An output directory is optional to display results.  Make sure 
+that you set your pathdef to include the subdirectories of appsrc.  Here, the
+superpixel images need not be in the same directory as the originals, but 
+should have the same basenames.
+
+To go from a set of images to results, you need to 
+  a) Put the images inside a directory
+  b) Create the superpixel images (e.g. using F/H; see below)
+  c) Run APPimages2superpixels to get the superpixel structures
+  d) Run APPtestDirectory
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+NOTES:
+
+  Superpixels:
+  I use the segmentation code provided by Felzenszwalb and Huttenlocher
+  at people.cs.uchicago.edu/~pff/segment/ to create the superpixels in my
+  experiments.  The first three arguments (sigma, k, min) that I use are 
+  0.8 100 100.  I've included a pl script for segmenting a directory
+  that you may find useful.  You can also use a different program to create 
+  the superpixel image.  That image should have a different RGB color for 
+  each segment without drawn boundaries between segments.  
+
+  Windows:
+  I do not have MATLAB 7 for Windows and, thus, could not compile it for
+  Windows.  If someone else has MATLAB 7 for Windows and can create an 
+  executable of photoPopup, I would appreciate it if the exec is sent
+  to me, along with the MCRInstall.zip file with the libraries, so that 
+  I can make it public.
+
+  Comments, Bugs:
+  If you have any comments or suggestions please e-mail them to 
+  dhoiem@cs.cmu.edu.  If you re-write any of the code in C and MEX it
+  or make the algorithm faster in another way, I would appreciate if you
+  send the revised code to me so that I can make it publically available
+  (with acknowledgement of the revision author).  
+
+
+(C) Derek Hoiem, Carnegie Mellon University, 2005
+ 

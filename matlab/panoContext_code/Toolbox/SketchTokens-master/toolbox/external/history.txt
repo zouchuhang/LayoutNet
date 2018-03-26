@@ -1,0 +1,295 @@
+Version 3.22 (05-Aug-2013)
+ -detector/acf*: minor fixes and tweaks
+
+Version 3.21 (30-July-2013)
+ -classify/adaBoost*,binaryTree*: various improvements
+ -detector/acf*: various optimization and tweaks
+ -detector/acfDemoCal.m: added detector trained on Caltech Peds Dataset
+ -minor: toolboxComple.m
+
+Version 3.20 (25-July-2013)
+ * THIS IS A MAJOR RELEASE, FEATURING THE FOLLOWING NEW PACKAGE:
+ *  detector/ - Aggregate Channel Features (ACF) object detection code.
+ * For more information, see detector/Contents.m. Other changes:
+ -images/bb*.m: moved to detector/bb*.m
+ -detector/bbGt.m: removed obsolete sampleWins() and sampleWinsDir() functions
+ -classify/adaBoost*.m: added highly optimized code for boosted decision trees
+ -classify/binaryTree*.m: added highly optimized code for binary decision trees
+ -dijkstra.*: fixed for 64 bit and added back to toolbox (thanks Bhuwan Dhingra)
+ -minor: forestFindThr.cpp, forestInds.cpp, toolboxComple, demoGenData
+
+Version 3.10 (11-June-2013)
+ -NO LONGER SUPPORTING MATLAB VERSIONS PRIOR TO MATLAB 2011b
+ -mlint error fixes throughout for Matlab 2013a
+ -forestTrain.m: optimizations and minor fix if hs small (thanks Stefan Gachter)
+ -bbGt.m: minor fix to bbGt>loadAll (thanks Phuc Nguyen)
+ -minor: savefig, seqReaderPlugin
+
+Version 3.02 (19-Feb-2013)
+ -chnsCompute.m/chnsPyramid.m: tweaks to input/output format
+ -chnsScaling.m: improved robustness, various tweaks
+ -fevalDistr.m: new usage cases, major overhaul
+ -minor: gradientMag, rgbConvert, bbGt, opticalFlow, 
+    convTri, convBox, mat2cell2, plotRoc
+
+Version 3.01 (17-Sep-2012)
+ -opticalFlow.m: optimized coarse-to-fine LK and HS flow
+ -optFlow*.m: deleted, made obsolete by opticalFlow.m
+ -forestTrain.m/forestApply.m: fast random forest code
+ -minor: toolboxCompile.m, imtransform2.m, seqReaderPlugin.m
+
+Version 3.00 (6-Aug-2012)
+ * THIS IS A MAJOR RELEASE, FEATURING THE FOLLOWING NEW PACKAGE:
+ *  channels/ - Robust image features, including HOG, for fast object detection. 
+ * For more information, see channels/Contents.m. Other changes:
+ -moved hog, hogDraw and imResample from images/ to channels/
+ -removed mac binaries which were obsolete (code can still be compiled on a Mac)
+ -minor: toolboxUpdateHeader, toolboxCompile, toolboxGenDoc, localSum, imShrink
+
+Version 2.66 (4-Aug-2012)
+ -optFlowHorn.m: major rewrite/optimization, coarse-to-fine computation
+ -minor: bbLabeler.m, plotRoc.m, seqReader/WriterPlugin.m, bbGt.m
+
+Version 2.65 (14-June-2012)
+ -bbApply>random(): rewrote to make more powerful
+ -bbGt: various improvements/tweaks
+ -seqReaderPlugin.m: support for reading Jpeg-BayerRGB8 (thanks Dayu Lin)
+ -minor: jitterImage.m, char2img.m
+
+Version 2.64 (13-Apr-2012)
+ -bbGt.m: major changes/overhaul, not fully backward compatible
+ -minor: bbApply.m
+
+Version 2.63 (15-Mar-2012)
+ -plotRoc.m: ability to specify multiple reference points
+ -bbGt.m: optimized various subfunctions and made more flexible
+ -seq*Plugin.m: support for PNG in Matlab 2011b and BayerRGB8 (for read only)
+ -minor: bbApply.m, convOnes.c
+
+Version 2.62 (22-Dec-11)
+ -imResample: major optimziations, *input format has changed*
+ -ploRoc.m: improved options and commenting, fixed second output parameter
+ -hog: major optimizations, removed obsolete param oGran
+ -dijkstra.*: removed from toolbox (was broken on 64 bit matlab)
+ -removed all 32 bit binaries (will no longer distribute)
+ -minor: dispMatrixIm.m, imtransform2, bbApply.m, jitterImage.m
+
+Version 2.61 (16-June-11)
+ -imtransform2: massive overhaul (optimized, mexed, new IO format)
+ -imagesAlign: added code for fast/robust homography estimation
+ -diffTracker: removed (made obsolete by far more powerful imagesAlign)
+ -fernsClfTrain: various speedups (thanks Kristin Branson)
+ -kernelTracker: minor bug fix for single scale case (thanks Juan Carlos Niebles)
+ -minor: fevalDistr, simpleCache, seqIo, seqPlayer, seqReaderPlugin, ...
+    textureMap, convnFast, diskFill, jitterImage, toolboxCompile, dijkstra1.cpp
+
+Version 2.60 (21-Jan-11)
+ -behaviorAnnotator: added video behavior annotation tool to toolbox.
+ -seqIo: convert from avi (thanks Xavier Burgos-Artizzu), various tweaks
+ -bbNms: large speedups (thanks Boris Babenko), changed how maxn works
+ -plotRoc: various minor fixes
+ -imResample: optimized
+ -mexw64: updated windows 64 bit binaries
+ -minor: getPrmDflt(), seqPlayer
+
+Version 2.53 (18-Nov-10)
+ -localSum: sped up case for 2D or 3D convolution w ones filter
+ -imResample: added case for fast nearest neighbor image resampling
+ -imtransform2: various optimization, including inline linear interp
+ -diffTracker: added ability to find scale change between images
+ -bbLabeler: enhanced GUI, including zoom and pan control (thanks Boris Babenko)
+ -added mac 64 bit intel binaries
+ -minor: nlfiltersep, seqIo, toolboxCompile
+
+Version 2.52 (25-Oct-10)
+ -seq*.m: various optimizations for reading/writing/viewing seq files
+ -pdist2: fix for numerical error causing negative d (thanks Lena Gorelick)
+ -bbLabler.m: tweaked GUI, image wide lines indicate cursor position
+ -kmeans2: ability to specify initial cluster centers for first trial
+ -kernelTracker: minor bug fix for single scale case (thanks Juan Carlos Niebles)
+ -minor: bbNms, bbGt, bbApply, multiTimes, fevalDistr, plotRoc
+
+Version 2.51 (17-Apr-10)
+ -seqIo.m: major rewrite: cleanup, commenting, new functionality, bug fixes
+ -updated description of classify/ directory on main page
+ -minor: seqWriterPlugin, seqReaderPlugin, seqPlayer, imRectRot, uniqueColors
+
+Version 2.50 (18-Mar-10)
+ -classify/ferns*.m: fast random fern classification/regression code
+ -dispMatrixIm.m: code to display a Matrix with non-negative entries in image form
+ -fevalDistr.m: jobs can return outputs (not limited to writing res to disk)
+ -bbApply.m: crop() correctly returns extent of cropped bbs
+ -toolboxCompile.m: rewrite, standardized all c/c++ headers
+ -classify/clf*.m, nfoldxval.m, demoClassify.m: moved to external/deprecated,
+   these functions were outdated, better code exists, will no longer support these
+ -minor: randSample, rbfComputeBasis, rbfComputeFtrs, seqIo, imResample1, ...
+   tocStatus, seqPlayer, bbGt, confMatrixShow, textureMap, seqReaderPlugin
+
+Version 2.42 (22-Feb-10)
+ -jitterImage.m: major overhaul (also removed jitterVideo.m as it was broken)
+ -getPrmDflt.m: major rewrite (speedup and code cleanup)
+ -bbNms.m: added ovrDnm parameter
+ -bbGt.m: fixed toGt() to work for ellipses, added draw()
+ -minor: toolboxCompile, multiTimes, seqPlayer, plotEllipse, randSample, pDist2
+ -using Matlab wrappers and moved mex to /private: imResample, hog, dijkstra
+
+Version 2.41 (18-Jan-10)
+ -hog.cpp, hogDraw.m: added very efficient HOG feature computation code
+ -fevalDistr.m: wrapper for distributed cluster code (must be installed separately)
+ -bbGt.m: added evalResDir() for evaluating Pascal detection criteria
+ -nlfiltersep.m: simpler/faster 'block' case (deleted nlfiltersep_blocksum.*).
+ -localSum.m: extra options to compute local mins/maxes
+ -seqIo.m/seqReaderPlugin.m: 'getts': return timestamps for all frames
+ -minor: plotRoc.m, toolboxCompile.m, bbApply.m, bbLabeler.m, im.m, bbNms.m
+
+Version 2.40 (24-Nov-09)
+ -added images/bbLabeler.m: Bounding box or ellipse labeler for static images.
+ -added images/bbGt.m: bb data struct, evaluation and sampling routines.
+ -images/seqIo.m, seqReaderPlugin.m: seq conversion and new header support
+ -images/imRectRot.m: additional display options and numerous tweaks
+ -matlab/multiDiv.m: added extra cases
+ -images/maskEllipse.m: faster, simpler, minor bus fix, all in matlab now
+ -images/bbApply.m: rewrote draw(), tweaked toMask()
+ -minor: plotEllipse.m, fevalImages.m, cell2array.m, bbNms.m, seqPlayer.m
+
+Version 2.35 (17-Sep-09)
+ -tested w Matlab 2009b (some mlint errors due to new tilde ~ operator)
+ -added windows 64-bit binaries
+ -added matlab/multiDiv.m (similar to multiTimes but for division)
+ -added images/imRectRot.m: draggable, resizable, rotatable rect or ellipse
+ -tuned images/imRectLite.m, however, now OBSOLETE (see imRectRot.m)
+ -fixed some compatibility issues w Octave (rotationMatrix and getPrmDft)
+ -added new cases to matlab/multiTimes.m
+ -added matlab/spBlkDiag.m: sparse block matrix generation
+ -moved bbApply.m to /images (from /matlab), generalized bbApply>random
+ -added images/bbNms.m: Non-maximal suppression of bbs (including 'cover')
+ -sped up classify/pdist2.m for squared Euclidean case (thanks Vincent)
+ -images/imResample.m can now take inputs of type uint8
+ -seqIo.m: generalized to/frimgs, tweaked seq*Plugins, seqPlayer.m
+ -moved modefilt1.m form /image to /filters
+ -added filters/medfilt1m.m: adaptive median filtering with missing values
+ -added txt2img.m and char2img.m to /matlab: Convert text to binary image
+ 
+Version 2.31 (03-Jun-09)
+ -tweaked images/imrectLite.m 
+ -generalized matlab/bbApply>squarify and bbApply>toMask
+ -added matlab/randSample.m (custom implem. of randsample in Stat Toolbox)
+ -added images/diffTracker.m (see documentation)
+ -images/seqIo.m: more versatile crop function
+
+Version 2.30 (15-May-09)
+ -adding images/seq* (support for .seq video files)
+ -added bbApply>nmsMax,toMask,frMask, tweaked other bbApply funcs
+ -optimized rbfComputeFtrs
+ -added matlab/multiTimes.m (faster than external/other/multiprod.m)
+ -replaced images/imDownsample with images/imResample
+ -updated version of savefig to 2.0 (can embed fonts)
+ -fixed/suppressed mlint errors new to Matlab 2009a
+
+Version 2.20 (06-Mar-09)
+ -optimized classify/kmeans2 and classify/meanShift
+ -added matlab/uniqueColor.m for generating random colors
+ -added images/imDownsample (fast bilinear image downsampling) 
+ -tweaked/improved confMatrixShow
+ -removed restriction that pidst2 must use type double
+ -tweaked/added to bbApply.m
+ -tweaked/added to getPrmDflt.m
+ -tweaked/improved classify/rbf*
+ -added multiprod.m to external/other
+ -cleaned up c code/headers
+
+Version 2.12 (17-Nov-08)
+ -new version of savefig (also removed exportfig)
+ -optimized/tweaked nonMaxSupr and nonMaxSuprList <--2-3x faster
+ -added matlab/bbApply: functions for manipulating bounding boxes
+ -removed dependencies to randint & minmax (not available on all systems)
+ -tested compatibility with Matlab 2008b (all ok!)
+ -tested on minimal Matlab install (requires Image Processing +  Signal Processing Toolboxes)
+
+Version 2.11 (09-July-08)
+ -removing external/xmltree from toolbox (not being used by anything)
+ -removing /private directories from doc
+ -added Google Analytics Code to documentation (replaced StatCounter) 
+
+Version 2.10 (02-July-08)
+ -added kernelTracker.m (and helper funciton) to /images
+ -added /matlab/plotRoc.m and /matlab/dirSynch.m
+ -added matlab/dijkstras.m (and accompanying cpp files in /private)
+ -made /matlab/getPrmDflt.m more flexible
+ -minor update to /matlab/RotationMatrix.m
+ -moved main comment after "function ..." line for nicer Matlab code collapsing
+ -updated compile script, including linux binaries
+
+Version 2.03 (25-Feb-08)
+ -optimized getPrmDflt. New cleaner way of using it too.
+ -optimized images/imtransform2
+ -minor performance tweak for meanShift1.c
+ -minor tweaks to images/imrectLite
+ -minor tweak to doc index.html file to remove scrollbars if unnecessary
+ -typos fixes in documentation, learned to spell "license"
+
+Version 2.02 (31-Oct-07)
+ -made images/im.m compatible with Matlab2007b
+ -in doc changed toolbox_compile to toolboxCompile
+ -minor optimization / bug fix in matlab/arrayCrop
+ -minor bugs/cleanup of images/imtransform2 
+ -added images/imrectLite
+
+Version 2.01 (10-Oct-07)
+ -added copyright notice to each file
+ -added LGPL licence information (see gpl.txt and lgpl.txt)
+ -moved savefig/matrix2latex from /external to /external/other
+
+Version 2.0 (30-Sept-07)
+ -major overhaul that included renaming / merging many functions
+ -NOT backward compatible
+ -standardizing naming conventions (no more under_scores)
+ -removed:
+  -montages2 (see montages)
+  -rotation_matrix2D,rotation_matrix3D,recover_rotation3D (see rotationMatrix)
+  -localsum, localsum_block (see localSum)
+  -normxcorrn_fg (see normxcorrn)
+  -imsubs_resize (not useful/general)
+ -filters merged lots of 1d/nd functions (visalizeFilters, FbMake, filterGauss)
+ -removed randperm2 (see randsample in the matlab statistics toolbox)
+ -merged pca_apply and pca_apply_large
+ -removed mode2.m (now apparently part of matlab)
+ -merged all the dist_*.m -> into pdist2.m
+ -merged imwrite2split into imwrite2
+ -merged nlfilt_sep and nlfiltblock_sep into nlfiltersep
+ -merged 1d/nd histogram function, cleaned up commenting
+ -merged makemovie, makemovies, makemovieset, makemovisets, playmovie into playMovie
+ -merged filmstrip, filmstrips into filmStrip
+
+Version 1.5 (06-Jul-07)
+ -major documentation change
+ -formatting of code
+ -general code cleanup
+ -fixed display bug in kmeans2
+ -changed behavior of gauss_smooth if extra sigmas specified
+ -tweaked playmovies
+
+Version 1.03  (03-May-06)
+ -this file is now a standard part of the documentation
+ -thanks to everyone who gave me comments and helped make this toolbox more useful!
+ -added imtranslate.m
+ -playmovie/playmovies backward/forward playback
+ -comment nonmaxsupr < vs <=
+ -compile problems 'toolbox_compile'
+ -tweaked feval_images / imwrite2 to make more resilient
+ -added to imnormalize
+ -added scales to jitterimage
+ -added imwrite2split (useful extension to imwrite2 for writing/reading from mul dirs)
+ -lots of other minor fixes that I should have recorded...
+
+Version 1.02  (29-Nov-05)
+ -filmstrip/filstrips
+ -principal is misspelled in the PCA-related functions.
+ -fixed clustermontages (header was stripped)
+ -updated overview (add to path, recompile, description)
+
+ Version 1.01  (11-Oct-05)
+  -minor changes?
+ 
+ Version 1.00  (02-Oct-05)
+  -initial version

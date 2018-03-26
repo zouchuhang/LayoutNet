@@ -8,10 +8,7 @@ For academic use only.
 ## Prerequisites
 - Linux
 - NVIDIA GPU + CUDA CuDNN
-- Torch
-
-  matio: https://github.com/tbeu/matio
-
+- Torch 7
 - Matlab
 
 ## Data

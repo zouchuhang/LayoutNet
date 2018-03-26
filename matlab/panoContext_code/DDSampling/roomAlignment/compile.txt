@@ -1,0 +1,1 @@
+mex -O 'topdowninference/roomAlignment/roomAlignmentMex.cpp' COMPFLAGS="/openmp $COMPFLAGS"

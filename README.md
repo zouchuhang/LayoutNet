@@ -44,7 +44,7 @@ th driver_pano_edg.lua
 ```
 - To train the layout box regressor:
 ```
-th driver_pano_edg.lua
+th driver_pano_box.lua
 ```
 
 ## Test network

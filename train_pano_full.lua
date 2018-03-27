@@ -193,7 +193,7 @@ end
 losses = {} 
 vallosses = {}
 
-local optim_state = {opt.lr, opt.alpha, opt.epsilon}
+local optim_state = {opt.lr, opt.epsilon}
 local iterations = 8000
 local minValLoss = 1/0
 count = 1

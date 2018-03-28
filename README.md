@@ -60,7 +60,7 @@ This saves predicted boundary, corner and 3D layout parameter in "result/" folde
 cd matlab
 panoOptimization.m
 ```
-This loads saved predictions from the network out and performs sampling.
+This loads saved predictions from the network output and performs sampling.
 
 ## Evaluation
 

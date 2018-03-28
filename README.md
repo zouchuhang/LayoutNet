@@ -1,8 +1,6 @@
 # LayoutNet
 Torch implementation for CVPR 18 [paper](https://arxiv.org/pdf/1803.08999.pdf): "LayoutNet: Reconstructing the 3D Room Layout from a Single RGB Image"
 
-For academic use only.
-
 <img src='figs/teasor.jpg' width=400>
 
 ## Prerequisites

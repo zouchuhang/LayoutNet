@@ -65,4 +65,4 @@ This loads saved predictions from the network output and performs sampling.
 We provide the Matlab evaluation code for 3D IoU (compute3dOcc\_eval.m) and the generation of 2D layout label (getSegMask\_eval.m) for evaluating layout pixel accuracy.
 
 ## Citation
-Please cite our arxiv paper for any purpose of usage.
+Please cite our paper for any purpose of usage.

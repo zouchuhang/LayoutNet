@@ -66,3 +66,11 @@ We provide the Matlab evaluation code for 3D IoU (compute3dOcc\_eval.m) and the 
 
 ## Citation
 Please cite our paper for any purpose of usage.
+```
+@article{zou2018layoutnet,
+  title={LayoutNet: Reconstructing the 3D Room Layout from a Single RGB Image},
+  author={Zou, Chuhang and Colburn, Alex and Shan, Qi and Hoiem, Derek},
+  journal={arXiv preprint arXiv:1803.08999},
+  year={2018}
+}
+```

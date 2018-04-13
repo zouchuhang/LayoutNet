@@ -25,6 +25,9 @@ This includes the groundtruth 2D posiiton of room corners in .mat format from th
 
 This includes the pretrained full approach on the panoContext dataset, the joint boudary and corner prediction branch, the single boundary prediction branch and the 3D layout box regressor.
 
+## Image preprocess
+See script ./matlab/getManhattanAndAlign.m
+
 ## Train network
 - To train our full approach:
 ```

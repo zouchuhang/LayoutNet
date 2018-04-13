@@ -20,9 +20,18 @@ end
 im_o = im2double(im);
 
 % extract manhattan line
-[ olines, vp, views, edges, panoEdge, score, angle] = panoEdgeDetection( im_o, imgSize, qError);
+[ olines, vp, views, edges, panoEdge, score, angle] = panoEdgeDetection_line( im_o, imgSize, qError);
+panoEdge = double(panoEdge(:,:,[1,4,7])>0);
 
 % align image
-[rotImg, R] = rotatePanorama(im_o, vp(3:-1:1,:));
+[rotEdge, R] = rotatePanorama(panoEdge, vp(3:-1:1,:));
+Img_small = imresize(im_o, [1024 2048]);
+[rotImg, R] = rotatePanorama(Img_small, vp(3:-1:1,:));
+panoImg = imresize(rotImg, [im_h im_w]);
 
+% visual
+subplot(2,1,1)
+imagesc(rotImg); axis image
+subplot(2,1,2)
+imagesc(rotEdge); axis image
 

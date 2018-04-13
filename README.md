@@ -9,6 +9,7 @@ See sample [video](https://youtu.be/WDzYXRP6XDs) of 3D reconstruced layouts by o
 - Linux
 - NVIDIA GPU + CUDA CuDNN
 - Torch 7
+matio: https://github.com/tbeu/matio
 - Matlab
 
 ## Data

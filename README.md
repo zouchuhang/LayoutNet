@@ -78,10 +78,11 @@ Main training code in driver\_pano\_joint\_lsun.lua
 ## Citation
 Please cite our paper for any purpose of usage.
 ```
-@article{zou2018layoutnet,
+@inproceedings{zou2018layoutnet,
   title={LayoutNet: Reconstructing the 3D Room Layout from a Single RGB Image},
   author={Zou, Chuhang and Colburn, Alex and Shan, Qi and Hoiem, Derek},
-  journal={arXiv preprint arXiv:1803.08999},
+  booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+  pages={2051--2059},
   year={2018}
 }
 ```

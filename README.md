@@ -44,7 +44,7 @@ th driver_pano_joint.lua
 ```
 Note that this loads the pretrained boundary prediction branch.
 
-- To train the boudary prediction branch
+- To train the boudary prediction branch:
 ```
 th driver_pano_edg.lua
 ```
@@ -58,7 +58,7 @@ th driver_pano_box.lua
 ```
 th testNet_pano_full.lua
 ```
-This saves predicted boundary, corner and 3D layout parameter in "result/" folder
+This saves predicted boundary, corner and 3D layout parameter in "result/" folder.
 
 ## Optimization
 - To Add Manhattan constraints and optimize for a better layout, open Matlab, then:
@@ -73,8 +73,21 @@ This loads saved predictions from the network output and performs sampling.
 We provide the Matlab evaluation code for 3D IoU (compute3dOcc\_eval.m) and the generation of 2D layout label (getSegMask\_eval.m) for evaluating layout pixel accuracy.
 
 ## Extension to perspective images
-Main training code in driver\_pano\_joint\_lsun.lua
+- To train our full approach:
+```
+th driver_persp_joint_lsun_type.lua
+```
+Note that this loads the pretrained joint corner and boundary prediction branch.
 
+- To train the joint prediction branch of boudary and corner:
+```
+th driver_persp_joint_lsun.lua
+```
+Note that this loads the pretrained boundary prediction branch.
+- To train the boudary prediction branch:
+```
+th driver_persp_lsun.lua
+```
 ## Citation
 Please cite our paper for any purpose of usage.
 ```

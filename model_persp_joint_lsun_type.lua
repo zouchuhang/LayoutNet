@@ -170,7 +170,7 @@ model.core = require('weight-init')(model.core, method)
 params, grad_params = model_utils.combine_all_parameters(model.core)
 
 -- initialize from semantic segmentation
-seg_params = torch.load('./model/perspfull_joint_lsun.t7')
+seg_params = torch.load('./model/perspfull_joint_lsun_pretrained.t7')
 params[{{1, 94352587}}] = params[{{1, 94352587}}]:copy(seg_params)
 
 print('start training')

@@ -24,9 +24,11 @@ This includes the panoramas from both the panoContext dataset and our labeled st
 This includes the groundtruth 2D posiiton of room corners in .mat format from the two dataset
 
 ## Pretrained model
-- Download our pretrained [model](https://drive.google.com/file/d/1qqrKkT_nTN1RzjiLN92VvoB023ZoD28v/view?usp=sharing) to current folder
+- Download our pretrained [model](https://drive.google.com/file/d/1qqrKkT_nTN1RzjiLN92VvoB023ZoD28v/view?usp=sharing) to current folder. This includes:
 
-This includes the pretrained full approach on the panoContext dataset, the joint boudary and corner prediction branch, the single boundary prediction branch and the 3D layout box regressor.
+1) The pretrained full approach on the panoContext dataset, the joint boudary and corner prediction branch, the single boundary prediction branch and the 3D layout box regressor;
+
+2) The pretrained full approach on the LSUN dataset (we correct 10% wrong labels), the joint boudary and corner prediction branch and the single boundary prediction branch.
 
 ## Image preprocess
 We provide sample script in ./matlab/getManhattanAndAlign.m

@@ -23,6 +23,10 @@ This includes the panoramas from both the panoContext dataset and our labeled st
 
 This includes the groundtruth 2D posiiton of room corners in .mat format from the two dataset
 
+- Download preprocessed LSUN training/validation/testing [data](https://drive.google.com/file/d/1BSYquS7LietkRiyZMxBlqtY8uZSIsUUg/view?usp=sharing)
+
+Note that we correct 10% wrong corner labels.
+
 ## Pretrained model
 - Download our pretrained [model](https://drive.google.com/file/d/1bg9ZP3_KA1kvTWpCh4wQ0PfAuCm4j0qa/view?usp=sharing) to current folder. This includes:
 

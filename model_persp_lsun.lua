@@ -9,8 +9,8 @@ require 'cunn'
 require 'cudnn'
 
 -- get training dataset
-img_tr = torch.load('./data/lsun_img_tr.t7')
-edg_tr = torch.load('./data/lsun_edg_tr.t7')
+img_tr = torch.load('./data/LSUN_data/lsun_img_tr.t7')
+edg_tr = torch.load('./data/LSUN_data/lsun_edg_tr.t7')
 print('done')
 
 pano_tr = {}
@@ -21,15 +21,14 @@ print(tr_size)
 print('Uploaded training')
 
 -- get validation dataset
-img_val = torch.load('./data/lsun_img_val_lsun.t7')
-edg_val = torch.load('./data/lsun_edg_val_lsun.t7')
+img_val = torch.load('./data/LSUN_data/lsun_img_val_lsun.t7')
+edg_val = torch.load('./data/LSUN_data/lsun_edg_val_lsun.t7')
 pano_val = {}
 pano_val.inp = img_val
 pano_val.gt = edg_val
 val_size = pano_val.inp:size(1)
 print(val_size)
 print('Uploaded validation')
-
 
 -- make model
 model = {}

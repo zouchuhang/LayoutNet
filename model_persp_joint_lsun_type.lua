@@ -9,12 +9,12 @@ require 'cunn'
 require 'cudnn'
 
 -- get training dataset
-im_path = './data/lsun_tr/img/'
-ed_path = './data/lsun_tr/edg/'
-jc_path = './data/lsun_tr/cor/'
-jc_path2 = './data/lsun_tr/cor_flip/'
-id_path = './data/type/'
-tr_name = torch.load('./data/info_edg_stack_tr_lsun_640_trname.t7')
+im_path = './data/LSUN_data/lsun_tr/img/'
+ed_path = './data/LSUN_data/lsun_tr/edg/'
+jc_path = './data/LSUN_data/lsun_tr/cor/'
+jc_path2 = './data/LSUN_data/lsun_tr/cor_flip/'
+id_path = './data/LSUN_data/lsun_tr/type/'
+tr_name = torch.load('./data/LSUN_data/info_edg_stack_tr_lsun_640_d6_sig20_trname.t7')
 pano_tr = {}
 pano_tr.im_path = im_path
 pano_tr.ed_path = ed_path
@@ -28,10 +28,10 @@ print(tr_size)
 print('Uploaded training')
 
 -- get validation dataset
-img_val = torch.load('./data/lsun_img_val.t7')
-edg_val = torch.load('./data/lsun_edg_val.t7')
-junc_val = torch.load('./data/lsun_juc_val.t7')
-id_val = torch.load('./data/lsun_id_val.t7')
+img_val = torch.load('./data/LSUN_data/lsun_img_val.t7')
+edg_val = torch.load('./data/LSUN_data/lsun_edg_val.t7')
+junc_val = torch.load('./data/LSUN_data/lsun_juc_val.t7')
+id_val = torch.load('./data/LSUN_data/lsun_id_val.t7')
 pano_val = {}
 pano_val.inp = img_val
 pano_val.gt = edg_val
@@ -40,7 +40,6 @@ pano_val.gt3 = id_val
 val_size = pano_val.inp:size(1)
 print(val_size)
 print('Uploaded validation')
-
 
 -- make model
 model = {}

@@ -25,14 +25,14 @@ This includes the groundtruth 2D posiiton of room corners in .mat format from th
 
 - Download preprocessed LSUN training/validation/testing [data](https://drive.google.com/file/d/1BSYquS7LietkRiyZMxBlqtY8uZSIsUUg/view?usp=sharing) and related [.t7](https://drive.google.com/file/d/1GCK1NYJRE62DUVj2t5cu3CrCmzoV6urc/view?usp=sharing) file under /data/LSUN\_data/ folder
 
-Note that we correct 10% wrong corner labels.
+Note that we've corrected 10% wrong corner labels.
 
 ## Pretrained model
 - Download our pretrained [model](https://drive.google.com/file/d/1bg9ZP3_KA1kvTWpCh4wQ0PfAuCm4j0qa/view?usp=sharing) to current folder. This includes:
 
 1) The pretrained full approach on the panoContext dataset, the joint boudary and corner prediction branch, the single boundary prediction branch and the 3D layout box regressor;
 
-2) The pretrained full approach on the LSUN dataset (we correct 10% wrong labels), the joint boudary and corner prediction branch and the single boundary prediction branch.
+2) The pretrained full approach on the LSUN dataset (we've corrected 10% wrong labels), the joint boudary and corner prediction branch and the single boundary prediction branch.
 
 ## Image preprocess
 We provide sample script in ./matlab/getManhattanAndAlign.m

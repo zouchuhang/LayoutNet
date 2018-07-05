@@ -29,8 +29,11 @@ function getBatch(data, sampsize, count, idx)
     gtMsk = torch.zeros(sampsize, data.gt:size(2), data.gt:size(3), data.gt:size(4))
 
     for i = 1, sampsize do
-        data_inp = data.inp[{{idx[count]},{},{},{}}]
-        data_gt = data.gt[{{idx[count]},{},{}, {}}]
+        dir = data.tr_name[idx[count]]
+        im = image.load(data.im_path..dir)
+        data_inp = im
+        ed = image.load(data.ed_path..dir)
+        data_gt = ed
         -- data augmentation
         torch.seed() -- randomization
         -- flip

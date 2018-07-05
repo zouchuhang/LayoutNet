@@ -9,16 +9,18 @@ require 'cunn'
 require 'cudnn'
 
 -- get training dataset
-img_tr = torch.load('./data/LSUN_data/lsun_img_tr.t7')
-edg_tr = torch.load('./data/LSUN_data/lsun_edg_tr.t7')
-print('done')
-
+im_path = './data/LSUN_data/lsun_tr/img/'
+ed_path = './data/LSUN_data/lsun_tr/edg/'
+tr_name = torch.load('./data/LSUN_data/info_edg_stack_tr_lsun_640_d6_sig20_trname.t7')
 pano_tr = {}
-pano_tr.inp = img_tr
-pano_tr.gt = edg_tr
-tr_size = pano_tr.inp:size(1)
+pano_tr.im_path = im_path
+pano_tr.ed_path = ed_path
+pano_tr.tr_name = tr_name
+tr_size = #tr_name
 print(tr_size)
+
 print('Uploaded training')
+
 
 -- get validation dataset
 img_val = torch.load('./data/LSUN_data/lsun_img_val_lsun.t7')

@@ -35,8 +35,8 @@ Note that we've corrected 10% wrong corner labels.
 2) The pretrained full approach on the LSUN dataset (we've corrected 10% wrong labels), the joint boudary and corner prediction branch and the single boundary prediction branch.
 
 ## Image preprocess
-We provide sample script in ./matlab/getManhattanAndAlign.m
-
+We provide sample script in ./matlab/getManhattanAndAlign.m.
+To convert gt data to .t7 file, see sample code preProcess\_pano.lua
 ## Train network
 - To train our full approach:
 ```

@@ -6,7 +6,7 @@ See sample [video](https://youtu.be/WDzYXRP6XDs) of 3D reconstruced layouts by o
 <img src='figs/teasor.jpg' width=400>
 
 ## Third party implementation
-[PyTorch](https://github.com/zouchuhang/LayoutNet) implementation by [sunset1995](https://github.com/sunset1995)
+PyTorch [implementation](https://github.com/zouchuhang/LayoutNet) by [sunset1995](https://github.com/sunset1995)
 
 ## Prerequisites
 - Linux

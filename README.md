@@ -37,6 +37,8 @@ Note that we've corrected 10% wrong corner labels.
 ## Image preprocess
 We provide sample script to extract Manhattan lines and align the panorama in ./matlab/getManhattanAndAlign.m.
 
+To get gt edge map, corner map and box parameters, see sample script ./matlab/preprocessPano.m
+
 To convert gt data to .t7 file, see sample code preProcess\_pano.lua
 
 ## Train network

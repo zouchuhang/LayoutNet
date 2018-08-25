@@ -99,6 +99,9 @@ Note that this loads the pretrained boundary prediction branch.
 ```
 th driver_persp_lsun.lua
 ```
+## Miscellaneous
+- To get reference for the labeling tool please check panoLabelTool.m.
+
 ## Citation
 Please cite our paper for any purpose of usage.
 ```

@@ -7,7 +7,7 @@ nl = val_set.test;
 name_list = {nl.image};
 
 % match test images in .t7 file with the gt name for evaluation
-fid = fopen('../data/lsun_ts.txt');
+fid = fopen('../gt/lsun_ts.txt');
 tline = fgetl(fid);
 
 figure(1);ha = tight_subplot(2,2);

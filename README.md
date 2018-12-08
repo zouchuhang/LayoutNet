@@ -99,6 +99,18 @@ Note that this loads the pretrained boundary prediction branch.
 ```
 th driver_persp_lsun.lua
 ```
+- To test the trained network:
+```
+th testNet_persp_full_lsun.lua
+```
+Note that this saves predicted boundary, corner and room type in "result/" folder. To get the exact 2D corner position on the image, run the following using Matlab:
+```
+cd matlab
+getLSUNRes.m
+```
+You need to download the LSUN data and the toolbox to run through the experiment.
+
+
 ## Miscellaneous
 - To get reference for the labeling tool please check panoLabelTool.m.
 

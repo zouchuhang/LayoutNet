@@ -28,12 +28,16 @@ This includes the groundtruth 2D position of room corners in .mat format from th
 
 - Download preprocessed LSUN training/validation/testing [data](https://drive.google.com/file/d/1BSYquS7LietkRiyZMxBlqtY8uZSIsUUg/view?usp=sharing) and related [.t7](https://drive.google.com/file/d/1QO9MioPRKUBKq_sEh06-nk8xAAohzueD/view?usp=sharing) file under /data/LSUN\_data/ folder. We've corrected 10% wrong corner labels.
 
+- We provide training/tesing [.t7](https://drive.google.com/file/d/14K8EQfwJif3WJOtwD3SzdHn7NrNmGhVm/view?usp=sharing) samples (selected from PanoContext) to train for general Manhattan layouts prediction with few non-cuboid and cuboid room shape ground truth.
+
 ## Pretrained model
 - Download our pretrained [model](https://drive.google.com/file/d/1bg9ZP3_KA1kvTWpCh4wQ0PfAuCm4j0qa/view?usp=sharing) to current folder. This includes:
 
 1) The pretrained full approach on the panoContext dataset, the joint boudary and corner prediction branch, the single boundary prediction branch and the 3D layout box regressor;
 
 2) The pretrained full approach on the LSUN dataset (we've corrected 10% wrong labels), the joint boudary and corner prediction branch and the single boundary prediction branch.
+
+- The pretrained [model](https://drive.google.com/file/d/1eqP8J1iFB3LriNxXMM2wGsP-AsMPf-6r/view?usp=sharing) for non-cuboid room shape prediction on the panoContext dataset. Using our labeled non-cuboid and cuboid room shape data.
 
 ## Image preprocess
 We provide sample script to extract Manhattan lines and align the panorama in ./matlab/getManhattanAndAlign.m.

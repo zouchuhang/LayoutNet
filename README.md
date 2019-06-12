@@ -18,7 +18,7 @@ matio: https://github.com/tbeu/matio
 - Matlab
 
 ## Data
-- Download preprocessed (aligned to horizontal floor plane) training/validation/testing [data](https://drive.google.com/file/d/1vsIvZ5L-VT0sH-GgbUL1sRYiEHn2Jn3B/view?usp=sharing) to current folder
+- Download preprocessed (aligned to horizontal floor plane) training/validation/testing [data](https://drive.google.com/file/d/1400fSLme70jnTnsmkPk4YLDAtQA0mgTP/view?usp=sharing) to current folder
 
 This includes the panoramas from both the panoContext dataset and our labeled stanford 2d-3d dataset.
 
@@ -31,7 +31,7 @@ This includes the groundtruth 2D position of room corners in .mat format from th
 - We provide training/tesing [.t7](https://drive.google.com/file/d/14K8EQfwJif3WJOtwD3SzdHn7NrNmGhVm/view?usp=sharing) samples (selected from PanoContext) to train for general Manhattan layouts prediction. A few sub-samples have non-cuboid room shape ground truth.
 
 ## Pretrained model
-- Download our pretrained [model](https://drive.google.com/file/d/1bg9ZP3_KA1kvTWpCh4wQ0PfAuCm4j0qa/view?usp=sharing) to current folder. This includes:
+- Download our pretrained [model](https://drive.google.com/file/d/1Z7-i48OUt6NG9VshCfPxp0gduNBFqwzh/view?usp=sharing) to current folder. This includes:
 
 1) The pretrained full approach on the panoContext dataset, the joint boudary and corner prediction branch, the single boundary prediction branch and the 3D layout box regressor;
 

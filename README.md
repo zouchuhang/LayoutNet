@@ -1,5 +1,5 @@
 # LayoutNet
-New: Check our official PyTorch implementation for [LayoutNet v2](https://github.com/zouchuhang/LayoutNetv2)
+**New: Please check our official PyTorch implementation for [LayoutNet v2](https://github.com/zouchuhang/LayoutNetv2)
 
 Torch implementation for CVPR 18 [paper](http://openaccess.thecvf.com/content_cvpr_2018/papers/Zou_LayoutNet_Reconstructing_the_CVPR_2018_paper.pdf): "LayoutNet: Reconstructing the 3D Room Layout from a Single RGB Image"
 

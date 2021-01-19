@@ -7,9 +7,6 @@ See sample [video](https://youtu.be/WDzYXRP6XDs) of 3D reconstruced layouts by o
 
 <img src='figs/teasor.jpg' width=400>
 
-## Third party implementation
-- PyTorch [implementation](https://github.com/sunset1995/pytorch-layoutnet) by [sunset1995](https://github.com/sunset1995)
-
 ## Prerequisites
 - Linux
 - NVIDIA GPU + CUDA CuDNN
